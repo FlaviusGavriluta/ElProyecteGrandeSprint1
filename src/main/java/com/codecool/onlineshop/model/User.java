@@ -15,7 +15,6 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private Long id;
     private String username;
     private String email;
@@ -24,4 +23,14 @@ public class User {
     private String phoneNumber;
     private String paymentInfo;
 
+    @Override
+    public String toString() {
+        return "Id: " + id +
+                "User: " + username +
+                "Email: " + email +
+                "Password: " + password +
+                "Address: " + address +
+                "Phone number: " + phoneNumber +
+                "Payment info: " + paymentInfo;
+    }
 }
