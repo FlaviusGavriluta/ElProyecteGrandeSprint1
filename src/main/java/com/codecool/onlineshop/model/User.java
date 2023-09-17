@@ -14,7 +14,7 @@ import lombok.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String username;
     private String email;
@@ -25,12 +25,12 @@ public class User {
 
     @Override
     public String toString() {
-        return "Id: " + id +
-                "User: " + username +
-                "Email: " + email +
-                "Password: " + password +
-                "Address: " + address +
-                "Phone number: " + phoneNumber +
+        return "Id: " + id + "\n" +
+                "User: " + username + "\n" +
+                "Email: " + email + "\n" +
+                "Password: " + password + "\n" +
+                "Address: " + address + "\n" +
+                "Phone number: " + phoneNumber + "\n" +
                 "Payment info: " + paymentInfo;
     }
 }
