@@ -48,6 +48,7 @@ public class UserService {
         existingUser.setAddress(updatedUser.getAddress());
         existingUser.setPhoneNumber(updatedUser.getPhoneNumber());
         existingUser.setPaymentInfo(updatedUser.getPaymentInfo());
+        
 
         return usersRepository.save(existingUser);
     }
