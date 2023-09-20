@@ -38,7 +38,7 @@ public class UserService {
         return usersRepository.findById(id);
     }
 
-    public User updateByUserId(Long userId, User updatedUser) {
+    public User updateUserById(Long userId, User updatedUser) {
         User existingUser = usersRepository.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException("User not found with ID: " + userId));
 
@@ -48,7 +48,7 @@ public class UserService {
         existingUser.setAddress(updatedUser.getAddress());
         existingUser.setPhoneNumber(updatedUser.getPhoneNumber());
         existingUser.setPaymentInfo(updatedUser.getPaymentInfo());
-        
+
 
         return usersRepository.save(existingUser);
     }
