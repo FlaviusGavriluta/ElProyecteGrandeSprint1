@@ -22,6 +22,7 @@ public class User {
     private String address;
     private String phoneNumber;
     private String paymentInfo;
+    private String imagePath = "src/main/resources/imagePath/missing-image.png";
 
     @Override
     public String toString() {

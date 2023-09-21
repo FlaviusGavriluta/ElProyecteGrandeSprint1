@@ -1,6 +1,7 @@
 package com.codecool.onlineshop.service;
 
 
+import com.codecool.onlineshop.exceptions.ItemNotFoundException;
 import com.codecool.onlineshop.model.Item;
 import com.codecool.onlineshop.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +33,14 @@ public class ItemService {
         return itemRepository.findById(itemId);
     }
 
-    public void updateItem(Long itemId, Item item) {
+    public Item updateItem(Long itemId, Item updatedItem) {
+        Item item = itemRepository.findById(itemId)
+                .orElseThrow(() -> new ItemNotFoundException("User not found with ID: " + itemId));
+
+        item.setName(updatedItem.getName());
+        item.setPrice(updatedItem.getPrice());
+        item.setImagePath(updatedItem.getImagePath());
+
+        return itemRepository.save(item);
     }
-    // public void updateRoom(Long roomId, Room newRoom) {
-    //        roomDAO.updateRoomById(roomId, newRoom);
-    //    }
 }
