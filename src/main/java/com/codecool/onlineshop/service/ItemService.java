@@ -6,9 +6,12 @@ import com.codecool.onlineshop.model.Item;
 import com.codecool.onlineshop.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
+import java.util.stream.IntStream;
 
 @Service
 public class ItemService {
@@ -42,5 +45,31 @@ public class ItemService {
         item.setImagePath(updatedItem.getImagePath());
 
         return itemRepository.save(item);
+    }
+
+    @Transactional
+    public void generateAndInsertRandomItems() {
+        IntStream.rangeClosed(1, 10).forEach(i -> {
+            Item item = createRandomItem();
+            itemRepository.save(item);
+        });
+    }
+
+    private Item createRandomItem() {
+        String randomName = generateRandomName();
+        Long randomPrice = generateRandomPrice();
+
+        return Item.builder()
+                .name(randomName)
+                .price(randomPrice)
+                .build();
+    }
+
+    private String generateRandomName() {
+        return "Item" + new Random().nextInt(1000);
+    }
+
+    private Long generateRandomPrice() {
+        return (long) (10 + Math.random() * 91);
     }
 }
