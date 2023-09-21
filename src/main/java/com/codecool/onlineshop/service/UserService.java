@@ -11,9 +11,6 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-
-
-
     private final UsersRepository usersRepository;
 
     @Autowired
@@ -24,7 +21,6 @@ public class UserService {
     public void addUser(User user) {
         usersRepository.save(user);
     }
-
 
    public void deleteUserById(Long id) {
         usersRepository.deleteById(id);

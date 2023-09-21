@@ -1,8 +1,10 @@
 package com.codecool.onlineshop.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,6 +25,8 @@ public class User {
     private String phoneNumber;
     private String paymentInfo;
     private String imagePath = "src/main/resources/imagePath/missing-image.png";
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Cart> carts = new ArrayList<>();
 
     @Override
     public String toString() {
