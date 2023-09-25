@@ -1,4 +1,5 @@
 package com.codecool.onlineshop.service;
+import com.codecool.onlineshop.exceptions.UserNotFoundException;
 import com.codecool.onlineshop.model.User;
 import com.codecool.onlineshop.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,6 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-
-
-
 
     private final UsersRepository usersRepository;
 
@@ -24,7 +22,6 @@ public class UserService {
         usersRepository.save(user);
     }
 
-
    public void deleteUserById(Long id) {
         usersRepository.deleteById(id);
    }
@@ -35,6 +32,20 @@ public class UserService {
 
     public Optional<User> getUserById(Long id) {
         return usersRepository.findById(id);
+    }
 
+    public User updateUserById(Long userId, User updatedUser) {
+        User user = usersRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found with ID: " + userId));
+
+        user.setUsername(updatedUser.getUsername());
+        user.setEmail(updatedUser.getEmail());
+        user.setPassword(updatedUser.getPassword());
+        user.setAddress(updatedUser.getAddress());
+        user.setPhoneNumber(updatedUser.getPhoneNumber());
+        user.setPaymentInfo(updatedUser.getPaymentInfo());
+        user.setImagePath(updatedUser.getImagePath());
+
+        return usersRepository.save(user);
     }
 }

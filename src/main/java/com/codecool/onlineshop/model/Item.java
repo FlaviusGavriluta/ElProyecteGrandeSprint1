@@ -10,12 +10,12 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String itemname;
+    private String name;
     private Long price;
+    private String imagePath = "src/main/resources/imagePath/missing-image.png";
 
 }

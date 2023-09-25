@@ -1,7 +1,6 @@
 package com.codecool.onlineshop.controller;
 
 import com.codecool.onlineshop.model.Item;
-import com.codecool.onlineshop.model.User;
 import com.codecool.onlineshop.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
