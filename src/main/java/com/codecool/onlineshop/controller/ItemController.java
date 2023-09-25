@@ -18,8 +18,8 @@ public class ItemController {
     public ItemController(ItemService itemService) {
         this.itemService = itemService;
     }
-
-    @GetMapping
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping()
     public List<Item> getAllItems() {
         return itemService.getAllItems();
     }
