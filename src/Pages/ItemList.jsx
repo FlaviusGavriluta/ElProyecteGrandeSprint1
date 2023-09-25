@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Loading from "../Components/Loading";
-import ItemTable from "../Components/ItemTable";
+import ItemTable from "../Components/ItemTable/ItemTable";
 
-import { useParams } from "react-router-dom";
+
 
 const fetchItems = () => {
     return fetch(`http://localhost:8080/items`).then((res) => res.json());
@@ -37,7 +37,7 @@ const ItemList = () => {
     if (loading) {
         return <Loading />;
     }
-
+    console.log(items[1].itemname);
     return <ItemTable items={items} onDelete={handleDelete} />;
 };
 

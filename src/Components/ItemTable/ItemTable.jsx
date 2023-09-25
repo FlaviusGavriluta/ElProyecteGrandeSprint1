@@ -13,6 +13,7 @@ const ItemTable = ({ items, onDelete }) => {
     const startIndex = (currentPage - 1) * 10;
     const endIndex = currentPage * 10;
 
+    console.log(items);
 
     const updateItem = (item) => {
         return fetch(`/items/${item.id}`, {
@@ -24,7 +25,7 @@ const ItemTable = ({ items, onDelete }) => {
         }).then((res) => res.json());
     };
     const filteredItems = items.filter(item => {
-        const position = item.name.toLowerCase();
+        const position = item.itemname.toLowerCase();
         const level = item.price;
         return position.includes(filterBy) || level.includes(filterBy);
     });
@@ -68,7 +69,7 @@ const ItemTable = ({ items, onDelete }) => {
                 <tbody>
                 {itemsToDisplay.map((item) => (
                     <tr key={item.id}>
-                        <td>{item.name}</td>
+                        <td>{item.itemname}</td>
 
                         <td> <input
                             type="checkbox"
@@ -99,7 +100,7 @@ const ItemTable = ({ items, onDelete }) => {
                 <span>{currentPage}</span>
                 <button
                     onClick={() => handlePageChange(currentPage + 1)}
-                    disabled={endIndex >= employees.length}
+                    disabled={endIndex >= items.length}
                 >
                     Next
                 </button>
