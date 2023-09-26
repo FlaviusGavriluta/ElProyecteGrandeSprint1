@@ -8,7 +8,7 @@ const fetchItems = () => {
     return fetch(`http://localhost:8080/items`).then((res) => res.json());
 };
 const deleteItem = (id) => {
-    return fetch(`/items/${id}`, { method: "DELETE" }).then((res) =>
+    return fetch(`http://localhost:8080/items/${id}`, { method: "DELETE" }).then((res) =>
         res.json()
     );
 };
