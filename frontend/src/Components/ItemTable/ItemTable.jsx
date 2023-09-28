@@ -25,7 +25,7 @@ const ItemTable = ({ items, onDelete }) => {
         }).then((res) => res.json());
     };
     const filteredItems = items.filter(item => {
-        const position = item.itemname.toLowerCase();
+        const position = item.name.toLowerCase();
         const level = item.price;
         return position.includes(filterBy) || level.includes(filterBy);
     });
@@ -69,7 +69,7 @@ const ItemTable = ({ items, onDelete }) => {
                 <tbody>
                 {itemsToDisplay.map((item) => (
                     <tr key={item.id}>
-                        <td>{item.itemname}</td>
+                        <td>{item.name}</td>
 
                         <td> <input
                             type="checkbox"
